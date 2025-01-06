@@ -34,18 +34,45 @@ def speak(text):
     engine.say(text)
     engine.runAndWait()
 
+# def authenticate():
+#     while True: 
+#         # use your google app password ( it will be available at 2fa two factor authentication ) for google security purpose
+#         email = input("Enter your Gmail address: ")
+#         password = input("Enter your Gmail password: ")
+#         try:
+#             server = imaplib.IMAP4_SSL("imap.gmail.com")
+#             server.login(email, password)
+#             speak("Authentication successful!")
+#             print("Authentication successful!")
+#             return email,password,server
+#         except Exception as e:
+#             speak("Authentication failed: Please try again")
+#             print("Authentication failed:", str(e))
+#             return None
+
 def authenticate():
-    while True:  
-        # use your google app password ( it will be available at 2fa two factor authentication ) for google security purpose
-        email = input("Enter your Gmail address: ")
-        password = input("Enter your Gmail password: ")
+    speak("Welcome to voice based email system.")
+    speak("An innovative system designed for easy email management using voice commands.")
+    while True:  # Keep looping until authentication succeeds
+        # email = input("Enter your Gmail address: ")
+        # password = input("Enter your Gmail password: ")
+
+        email= get_gmail_address()
+        speak("You said email address :" + email)
+        print("Email Address:" + email)
+        password = get_gmail_password()
+        #speak("Listening for password...")
+        #speak("Recognizing password...")
+        # speak("You said Password :" + email)
+        # print("You said Password:" + email)
         try:
             server = imaplib.IMAP4_SSL("imap.gmail.com")
             server.login(email, password)
             speak("Authentication successful!")
             print("Authentication successful!")
-            return email,password,server
+            return email, password, server
         except Exception as e:
             speak("Authentication failed: Please try again")
             print("Authentication failed:", str(e))
-            return None
+            print("Please try again.")
+    
