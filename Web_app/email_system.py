@@ -33,4 +33,19 @@ def speak(text):
     engine = pyttsx3.init()
     engine.say(text)
     engine.runAndWait()
-    
+
+def authenticate():
+    while True:  
+        # use your google app password ( it will be available at 2fa two factor authentication ) for google security purpose
+        email = input("Enter your Gmail address: ")
+        password = input("Enter your Gmail password: ")
+        try:
+            server = imaplib.IMAP4_SSL("imap.gmail.com")
+            server.login(email, password)
+            speak("Authentication successful!")
+            print("Authentication successful!")
+            return email,password,server
+        except Exception as e:
+            speak("Authentication failed: Please try again")
+            print("Authentication failed:", str(e))
+            return None
