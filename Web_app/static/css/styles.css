@@ -24,3 +24,54 @@ h1 {
                  0 0 20px #39FF14;
     animation: flicker 3s infinite;
 }
+
+.container {
+    height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-top: 50px;
+}
+
+
+
+ul {
+    list-style: none;
+    padding: 0;
+    width: 300px;
+    margin: 0 auto;
+}
+
+li {
+    color: #000000;
+    background-color: #39FF14;
+    margin: 15px 0;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px #39FF14;
+}
+
+li:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #39FF14;
+    background-color: #50FF30;
+}
+
+
+@keyframes flicker {
+    0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        opacity: 1;
+    }
+    20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        opacity: 0.8;
+    }
+}
