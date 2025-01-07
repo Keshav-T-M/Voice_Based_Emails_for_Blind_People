@@ -142,4 +142,22 @@ def get_gmail_password():
         print(e)
         return ""
 
-   
+
+def main(email, password, server):
+    server = imaplib.IMAP4_SSL("imap.gmail.com")
+    server.login(email, password)
+    while True:
+        speak("You can compose an email or logout. Say your choice.")
+        command = listen()  # Get user command via speech
+        if "compose" in command:
+            speak("Composing email. Please provide recipient, subject, and body.")
+            compose_email(server, email, password)
+        elif "inbox" in command:
+            speak("Accessing inbox.")
+            access_inbox(server, email, password)
+        elif "logout" in command:
+            speak("Logging out. Goodbye!")
+            server.logout()  # Logout from the email server
+            break
+        else:
+            speak("Invalid command. Please try again.")
