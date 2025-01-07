@@ -75,4 +75,24 @@ def authenticate():
             speak("Authentication failed: Please try again")
             print("Authentication failed:", str(e))
             print("Please try again.")
-    
+
+def listen():
+    recognizer = sr.Recognizer()
+    while True:
+        try:
+            with sr.Microphone() as source:
+                recognizer.adjust_for_ambient_noise(source,duration=0.5)  # Adjust for ambient noise with shorter duration
+                speak("Listening...")
+                audio = recognizer.listen(source, timeout=5)  # Set a timeout for listening
+            text = recognizer.recognize_google(audio, language="en-US", show_all=False)
+            text_without_spaces = re.sub(r'\s', '', text)
+            text_lowercase = text_without_spaces.lower()
+            speak(f"you said : {text_lowercase}")
+            return text_lowercase
+        except sr.WaitTimeoutError:
+            speak("Listening timeout. Please speak again.")
+        except sr.UnknownValueError:
+            speak("Could not understand audio. Please repeat your command.")
+        except sr.RequestError as e:
+            speak(f"Could not request results; {e}")
+            return None
