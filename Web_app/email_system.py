@@ -75,7 +75,7 @@ def authenticate():
             speak("Authentication failed: Please try again")
             print("Authentication failed:", str(e))
             print("Please try again.")
-
+            
 def listen():
     recognizer = sr.Recognizer()
     while True:
@@ -96,3 +96,28 @@ def listen():
         except sr.RequestError as e:
             speak(f"Could not request results; {e}")
             return None
+def get_gmail_address():
+    recognizer = sr.Recognizer()
+    while True:
+        with sr.Microphone() as source:
+            speak("Listening for email address...")
+            print("Listening for email address...")
+            recognizer.adjust_for_ambient_noise(source)
+            audio = recognizer.listen(source)
+        try:
+            speak("Recognizing email address...")
+            print("Recognizing email address...")
+            email_address = recognizer.recognize_google(audio)
+            email_address = email_address.replace(" ", "").replace("at", "@").replace("8", "@").replace("Gmail","gmail").replace("male", "mail").replace("dot", ".")  # Replace spaces and convert "at" to '@'
+            if "@" not in email_address:
+                speak("Sorry, I couldn't recognize the email address. Please try again.")
+                continue
+            else:
+                speak(f"You said email address: {email_address}")
+                # print(f"email address: {email_address}")
+                return email_address
+        except Exception as e:
+            print(e)
+            speak("Sorry, I couldn't recognize the email address. Please try again.")
+            continue
+
