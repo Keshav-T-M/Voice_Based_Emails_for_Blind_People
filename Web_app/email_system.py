@@ -121,3 +121,25 @@ def get_gmail_address():
             speak("Sorry, I couldn't recognize the email address. Please try again.")
             continue
 
+
+def get_gmail_password():
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        speak("Listening for password...")
+        recognizer.adjust_for_ambient_noise(source)
+        audio = recognizer.listen(source)
+    try:
+        speak("Recognizing password...")
+        password = recognizer.recognize_google(audio)
+        password = password.replace(" ", "").replace("dot", ".").replace("at", "@").replace("hash", "#").replace(
+            "dollar", "$").replace("percent", "%").replace("star", "*").replace("ampersand", "&").replace("underscore",
+                                                                                                          "_").replace(
+            "exclamation", "!")  # Replace spaces and convert "dot" to '.' and "at" to '@'
+        speak(f"You said password: {password}")
+        print(f"You said password: {password}")
+        return password
+    except Exception as e:
+        print(e)
+        return ""
+
+   
