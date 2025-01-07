@@ -142,7 +142,6 @@ def get_gmail_password():
         print(e)
         return ""
 
-
 def main(email, password, server):
     server = imaplib.IMAP4_SSL("imap.gmail.com")
     server.login(email, password)
@@ -161,6 +160,22 @@ def main(email, password, server):
             break
         else:
             speak("Invalid command. Please try again.")
+
+def convert_spoken_number_to_int(spoken_number):
+    # Define a dictionary to map spoken numbers to their integer equivalents
+    number_mapping = {
+        "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+        "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10
+        # Add more mappings as needed
+    }
+    try:
+        # Try to convert the spoken number directly to an integer
+        return int(spoken_number)
+    except ValueError:
+        # If conversion fails, try to map the spoken number to its integer equivalent
+        spoken_number_lower = spoken_number.lower()
+        return number_mapping.get(spoken_number_lower, None)
+
 
 if __name__ == "__main__":
     main()
