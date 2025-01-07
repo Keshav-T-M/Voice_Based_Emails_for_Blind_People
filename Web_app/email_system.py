@@ -161,3 +161,6 @@ def main(email, password, server):
             break
         else:
             speak("Invalid command. Please try again.")
+
+if __name__ == "__main__":
+    main()
