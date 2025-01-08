@@ -185,6 +185,11 @@ def compose_email(server, email, password):
         recipient = get_gmail_address()
         speak(f"Recipient's email address: {recipient}")
         print(f"Recipient's email address: {recipient}")
-
+        # Get the subject of the email
+        speak("What is the subject of the email? ")
+        subject = recognize_speech()
+        speak(f"Subject: {subject}")
+        print(f"Subject: {subject}")
+        
 if __name__ == "__main__":
     main()
