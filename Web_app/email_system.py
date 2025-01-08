@@ -196,6 +196,15 @@ def compose_email(server, email, password):
         speak(f"Body: {body}")
         print(f"Body: {body}")
 
+        # Create the email message
+        message = MIMEMultipart()
+        message['From'] = email
+        message['To'] = recipient
+
+        message['Subject'] = subject
+
+        body_text = MIMEText(body, 'plain')
+        message.attach(body_text)
 
 if __name__ == "__main__":
     main()
