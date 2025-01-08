@@ -190,6 +190,12 @@ def compose_email(server, email, password):
         subject = recognize_speech()
         speak(f"Subject: {subject}")
         print(f"Subject: {subject}")
-        
+        # Get the body of the email
+        speak("What is the body of the email? ")
+        body = recognize_speech()
+        speak(f"Body: {body}")
+        print(f"Body: {body}")
+
+
 if __name__ == "__main__":
     main()
