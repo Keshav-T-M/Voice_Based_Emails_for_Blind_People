@@ -28,7 +28,6 @@ def recognize_speech():
             speak(f"Could not request results; {e}")
             return None
 
-
 def speak(text):
     engine = pyttsx3.init()
     engine.say(text)
@@ -56,7 +55,6 @@ def authenticate():
     while True:  # Keep looping until authentication succeeds
         # email = input("Enter your Gmail address: ")
         # password = input("Enter your Gmail password: ")
-
         email= get_gmail_address()
         speak("You said email address :" + email)
         print("Email Address:" + email)
@@ -120,7 +118,6 @@ def get_gmail_address():
             print(e)
             speak("Sorry, I couldn't recognize the email address. Please try again.")
             continue
-
 
 def get_gmail_password():
     recognizer = sr.Recognizer()
