@@ -217,5 +217,17 @@ def compose_email(server, email, password):
             tts = gTTS(audio_content, lang='en')
             tts.save(audio_file_path)
 
+            with open(audio_file_path, "rb") as attachment:
+                part = MIMEBase("application", "octet-stream")
+                part.set_payload(attachment.read())
+            encoders.encode_base64(part)
+            part.add_header("Content-Disposition", f"attachment; filename= {audio_file_path}")
+
+            # Adding audio file
+            message.attach(part)
+            speak("Audio attachment added successfully!")
+            print("Audio attachment added successfully!")
+
+
 if __name__ == "__main__":
     main()
