@@ -176,6 +176,15 @@ def convert_spoken_number_to_int(spoken_number):
         spoken_number_lower = spoken_number.lower()
         return number_mapping.get(spoken_number_lower, None)
 
+def compose_email(server, email, password):
+    try:
+        # accepting recipient's email address
+        speak("You choose to compose an email")
+        print("Composing an email:")
+        speak("What is the recipient's email address? ")
+        recipient = get_gmail_address()
+        speak(f"Recipient's email address: {recipient}")
+        print(f"Recipient's email address: {recipient}")
 
 if __name__ == "__main__":
     main()
