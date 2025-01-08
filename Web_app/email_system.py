@@ -234,5 +234,14 @@ def compose_email(server, email, password):
 
         text = message.as_string()
 
+        # Send the email
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        server.login(email, password)
+        server.sendmail(email, recipient, text)
+        server.quit()
+
+        speak("Email sent successfully!")
+        print("Email sent successfully!")
+
 if __name__ == "__main__":
     main()
