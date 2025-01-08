@@ -206,5 +206,13 @@ def compose_email(server, email, password):
         body_text = MIMEText(body, 'plain')
         message.attach(body_text)
 
+        speak("Do you want to add an audio attachment to the email? for 'yes' say accept  and for 'no' say n ")
+        print("Do you want to add an audio attachment to the email? for 'yes' say accept  and for 'no' say n ")
+        audio_attachment = recognize_speech()
+        if "accept" in audio_attachment:
+            speak("Please speak the content for the audio attachment: ")
+            audio_content = recognize_speech()
+
+
 if __name__ == "__main__":
     main()
