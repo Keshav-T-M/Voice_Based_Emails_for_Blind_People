@@ -213,6 +213,9 @@ def compose_email(server, email, password):
             speak("Please speak the content for the audio attachment: ")
             audio_content = recognize_speech()
 
+            audio_file_path = "audio_attachment.wav"
+            tts = gTTS(audio_content, lang='en')
+            tts.save(audio_file_path)
 
 if __name__ == "__main__":
     main()
