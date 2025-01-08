@@ -243,5 +243,9 @@ def compose_email(server, email, password):
         speak("Email sent successfully!")
         print("Email sent successfully!")
 
+    except Exception as e:
+        speak("Error sending email:")
+        print("Error sending email:", str(e))
+
 if __name__ == "__main__":
     main()
