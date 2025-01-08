@@ -228,6 +228,11 @@ def compose_email(server, email, password):
             speak("Audio attachment added successfully!")
             print("Audio attachment added successfully!")
 
+        else:
+            speak("No audio attachment requested.")
+            print("No audio attachment requested !!!")
+
+        text = message.as_string()
 
 if __name__ == "__main__":
     main()
