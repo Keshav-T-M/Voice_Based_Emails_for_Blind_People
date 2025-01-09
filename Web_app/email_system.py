@@ -287,5 +287,10 @@ def access_inbox(server, email, password):
         speak("Error accessing inbox:")
         print("Error accessing inbox:", str(e))
 
+def read_unseen_emails(server, email, password):
+    try:
+        # Access the inbox
+        server.select("INBOX")
+
 if __name__ == "__main__":
     main()
