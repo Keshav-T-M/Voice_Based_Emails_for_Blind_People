@@ -269,6 +269,17 @@ def access_inbox(server, email, password):
             choice = listen()
             print("You choosen "+ choice)
 
+            if "unseen" in choice :
+                print("Accessing unseen emails")
+                read_unseen_emails(server, email, password)
+            elif "seen" in choice :
+                print("Accessing unseen emails")
+                read_seen_emails(server, email, password)
+            elif "exit" in choice :
+                speak("Exiting.")
+                print("EXiting.")
+                break
+      
 
 if __name__ == "__main__":
     main()
