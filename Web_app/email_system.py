@@ -292,5 +292,10 @@ def read_unseen_emails(server, email, password):
         # Access the inbox
         server.select("INBOX")
 
+        # Get the count of unseen emails
+        status, response = server.search(None, 'UNSEEN')
+        unseen_count = len(response[0].split())
+
+
 if __name__ == "__main__":
     main()
