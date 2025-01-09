@@ -279,7 +279,10 @@ def access_inbox(server, email, password):
                 speak("Exiting.")
                 print("EXiting.")
                 break
-      
+            else:
+                speak("Invalid choice. Please try again.")
+                print("Invalid choice. Please try again.")
+
 
 if __name__ == "__main__":
     main()
