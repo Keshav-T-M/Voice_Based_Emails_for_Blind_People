@@ -296,6 +296,18 @@ def read_unseen_emails(server, email, password):
         status, response = server.search(None, 'UNSEEN')
         unseen_count = len(response[0].split())
 
+        if unseen_count == 0:
+            speak("No unseen emails in the inbox.")
+            print("No unseen emails in the inbox.")
+            return
+        elif unseen_count == 1:
+            speak("There is one unseen email in the inbox.")
+            print("There is one unseen email in the inbox.")
+            num_emails_to_read = 1
+        else:
+            speak("How many unseen emails would you like to read?")
+            command = listen()
+            num_emails_to_read = convert_spoken_number_to_int(command)
 
 if __name__ == "__main__":
     main()
