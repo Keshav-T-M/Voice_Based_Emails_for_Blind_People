@@ -316,5 +316,15 @@ def read_unseen_emails(server, email, password):
         email_ids = response[0].split()
         email_ids = email_ids[::-1]  # Reverse order to get the latest emails first
 
+        for index in range(min(num_emails_to_read, len(email_ids))):
+            email_id = email_ids[index]
+            read_email(server, email, password, email_id)
+            if index < num_emails_to_read - 1:
+                speak("Do you want to read the next mail? for 'yes' say y  and for 'no' say n ")
+                print("Do you want to read the next mail? for 'yes' say y  and for 'no' say n ")
+                command = recognize_speech()
+                if "y" not in command:
+                    break
+
 if __name__ == "__main__":
     main()
