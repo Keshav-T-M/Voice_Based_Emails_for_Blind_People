@@ -309,5 +309,12 @@ def read_unseen_emails(server, email, password):
             command = listen()
             num_emails_to_read = convert_spoken_number_to_int(command)
 
+        if num_emails_to_read <= 0:
+            speak("Invalid input.")
+            return
+        status, response = server.search(None, 'UNSEEN')
+        email_ids = response[0].split()
+        email_ids = email_ids[::-1]  # Reverse order to get the latest emails first
+
 if __name__ == "__main__":
     main()
