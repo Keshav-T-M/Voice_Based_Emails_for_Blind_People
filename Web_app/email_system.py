@@ -283,6 +283,9 @@ def access_inbox(server, email, password):
                 speak("Invalid choice. Please try again.")
                 print("Invalid choice. Please try again.")
 
+    except Exception as e:
+        speak("Error accessing inbox:")
+        print("Error accessing inbox:", str(e))
 
 if __name__ == "__main__":
     main()
