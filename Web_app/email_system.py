@@ -244,5 +244,11 @@ def compose_email(server, email, password):
         speak("Error sending email:")
         print("Error sending email:", str(e))
 
+def access_inbox(server, email, password):
+    try:
+        # Access the inbox
+        print("Accessing the Inbox")
+        server.select("INBOX")
+
 if __name__ == "__main__":
     main()
