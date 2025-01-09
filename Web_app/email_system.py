@@ -250,5 +250,15 @@ def access_inbox(server, email, password):
         print("Accessing the Inbox")
         server.select("INBOX")
 
+        # Get the count of unseen emails
+        status, response = server.search(None, 'UNSEEN')
+        unseen_count = len(response[0].split())
+
+        # Get the count of seen emails
+        status, response = server.search(None, 'SEEN')
+        seen_count = len(response[0].split())
+        speak(f"There are {unseen_count} unseen emails and {seen_count} seen emails in the inbox.")
+        print(f"There are {unseen_count} unseen emails and {seen_count} seen emails in the inbox.")
+
 if __name__ == "__main__":
     main()
