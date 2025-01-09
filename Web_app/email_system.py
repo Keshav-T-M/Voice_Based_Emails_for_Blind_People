@@ -260,5 +260,15 @@ def access_inbox(server, email, password):
         speak(f"There are {unseen_count} unseen emails and {seen_count} seen emails in the inbox.")
         print(f"There are {unseen_count} unseen emails and {seen_count} seen emails in the inbox.")
 
+        while True:
+            speak("\nChoose an option:")
+            speak("Read unseen emails")
+            speak("Read seen emails")
+            speak("Exit")
+            speak("say your choice: ")
+            choice = listen()
+            print("You choosen "+ choice)
+
+
 if __name__ == "__main__":
     main()
