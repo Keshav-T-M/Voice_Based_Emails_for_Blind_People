@@ -325,6 +325,9 @@ def read_unseen_emails(server, email, password):
                 command = recognize_speech()
                 if "y" not in command:
                     break
+    except Exception as e:
+        speak("Error reading unseen emails:")
+        print("Error reading unseen emails:", str(e))
 
 if __name__ == "__main__":
     main()
